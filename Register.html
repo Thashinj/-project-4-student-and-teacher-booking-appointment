@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <!-- To add a reponsive design so the project is compatible in web and phone interfaces -->
+        <meta charset = "utf-8">
+        <meta name = "viewport", content = "width=device-width initial-scale=1.0">
+
+        <title> Project 4 - Student-Teacher Booking Appointment</title>
+
+        <!-- Link tag links the HTML file to the CSS file for the stylesheet elements to appear on the site -->
+        <link rel = "stylesheet"  href = "Appointment-interface.css">
+
+        <!-- Script tag that links to firebase javascript file for the login to work -->
+        <script type = "module" src = "register.js"></script>
+    </head>
+
+    <body>
+        
+        <!-- Div tag to add a form body -->
+        <div id = "formsign">
+            <h2> Register as a student </h2><br>
+            <!-- To create a register form to fill name, email and password of a student -->
+            <form class = "signupForm">
+            
+                <label for = "fname"> First Name: </label>
+                <input type = "text" id = "fname">
+
+                <label for = "lname"> Last Name: </label>
+                <input type = "text" id = "lname">
+
+                <label for = "email"> Your email ID: </label>
+                <input type = "text" id = "email">
+
+                <label for = "password"> Your password: </label>
+                <input type = "password" id = "password">
+
+                <label for = "password"> Confirm password: </label>
+                <input type = "password" id = "confirmPassword">
+                
+                <!-- Center the button -->
+                <div class = "center-button">
+                    <button id = "signup">Sign Up</button> <!-- To sign into the site -->
+                </div>
+
+            </form>
+        </div>
+        
+    </body>
+
+</html>

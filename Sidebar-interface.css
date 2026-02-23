@@ -1,0 +1,78 @@
+/* Import custom SchoolBook font */
+@font-face {
+    src: url('BombermanDemo-lxPEV.otf');
+    font-family: Bomberman;
+}
+
+/* Reset default spacing and apply font */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Bomberman;
+}
+
+/* Page background styling */
+body {
+    margin: auto;
+    padding: 62px;
+    background-image: url("appointmentground.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    display: flex;
+    color: rgb(255, 247, 239);
+}
+
+/* Fullscreen sidebar overlay */
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    background-color: rgb(41, 101, 255);
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    overflow-x: hidden;
+}
+
+/* Sidebar content container */
+.overlay-content {
+    position: relative;
+    top: 10%;
+    width: 200px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Sidebar links styling */
+.overlay a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 32px;
+    color: white;
+    display: block;
+    transition: 0.5s;
+}
+
+/* Sidebar link hover effect */
+.overlay a:hover, .overlay a:focus {
+    color: rgb(198, 240, 255);
+}
+
+/* Close button styling */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+}
+
+/* Responsive adjustment for small screens */
+@media screen and (max-height: 450px) {
+    .overlay .closebtn {
+        top: 15px;
+        right: 35px;
+    }
+}

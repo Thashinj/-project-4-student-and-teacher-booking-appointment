@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- To add a reponsive design so the project is compatible in web and phone interfaces -->
+        <meta charset = "utf-8">
+        <meta name = "viewport", content = "width=device-width initial-scale=1.0">
+
+        <title> Project 4 - Student-Teacher Booking Appointment</title>
+
+        <!-- Link tag links the HTML file to the CSS file for the stylesheet elements to appear on the site -->
+        <link rel = "stylesheet"  href = "Appointment-interface.css">
+        <link rel = "stylesheet"  href = "Sidebar-interface.css">
+
+        <!-- Links to the js file with the firebase connection -->
+        <script type = "module" src = ApproveStudent.js></script>
+
+        <!-- Links to the js file with the firebase connection for logging out-->
+        <script type = "module" src = logout.js></script>
+
+        <!-- Header to add a sidebar that displays Home and Logout -->
+        <header>
+            <ul>
+                <li><span onclick = "openNav()"> ☰ </span></li> <!-- Function to open the sidebar navigation -->
+                <li> Student-Teacher Appointment Booking </li>
+            </ul>
+        </header>
+        
+    </head>
+    <body>
+        <!-- Div tag that hides the sidebar from view -->
+        <div id = "myNav" class = "overlay">
+            <a href = "javascript:void(0)" class = "closebtn" onclick="closeNav()">✖</a> <!-- Closes the sidebar -->
+
+            <!-- Div tag that displays the sidebar content -->
+            <div class = "overlay-content">
+                <a href="Admin.html"> Home </a> <!-- Links back home to the tasks page -->
+                <a href = "#" id = "logout"> Logout</a> <!-- Logs out the user from the site -->
+            </div>
+
+        </div>
+
+        <div id = "form"> <!-- Div tag to hold the table interface -->
+
+            <table> <!-- Table, thead and tbody tags that groups heading and body content -->
+                <thead>
+                    <tr>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Status </th>
+                        <th> Action </th>
+                    </tr>
+                </thead>
+
+                <tbody id = "studentBody"></tbody> <!-- Takes the data from ApproveStudent.js file -->
+            </table>
+            
+        </div>
+
+        <script src = "Sidebar-working.js"></script> <!-- Links the working of the sidebar -->
+    </body>
+</html>

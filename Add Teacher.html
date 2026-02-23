@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- To add a reponsive design so the project is compatible in web and phone interfaces -->
+        <meta charset = "utf-8">
+        <meta name = "viewport", content = "width=device-width initial-scale=1.0">
+
+        <title> Project 4 - Student-Teacher Booking Appointment</title>
+
+        <!-- Link tag links the HTML file to the CSS file for the stylesheet elements to appear on the site -->
+        <link rel = "stylesheet"  href = "Appointment-interface.css">
+        <link rel = "stylesheet"  href = "Sidebar-interface.css">
+
+        <!-- Links to the js file with the firebase connection -->
+        <script type = "module" src = AddTeacher.js></script>
+
+        <!-- Links to the js file with the firebase connection for logging out-->
+        <script type = "module" src = logout.js></script>
+        
+        <!-- Header to add a sidebar that displays Home and Logout -->
+        <header>
+            <ul>
+                <li><span onclick = "openNav()"> ☰ </span></li> <!-- Function to open the sidebar navigation -->
+                <li> Student-Teacher Appointment Booking </li>
+            </ul>
+        </header>
+
+    </head>
+    <body>
+        <!-- Div tag that hides the sidebar from view -->
+        <div id = "myNav" class = "overlay">
+            <a href = "javascript:void(0)" class = "closebtn" onclick="closeNav()">✖</a> <!-- Closes the sidebar -->
+
+            <!-- Div tag that displays the sidebar content -->
+            <div class = "overlay-content">
+                <a href = "Admin.html"> Home </a> <!-- Links back home to the tasks page -->
+                <a href = "#" id = "logout"> Logout</a> <!-- Logs out the user from the site -->
+            </div>
+
+        </div>
+
+        <div id = "createform"> <!-- Div tag to hold the form interface -->
+            <h1> Enter teacher details </h1>
+            <form> <!-- Form to fill in all the teacher details -->
+
+                <label for = "name"> Teacher's Name: </label><br>
+                <input type = "text" id = "name"><br>
+
+                <label for = "email"> Email-ID: </label><br>
+                <input type = "email" id = "email"><br>
+
+                <label for = "pass"> Password: </label><br>
+                <input type = "password" id = "pass"><br>
+
+                <label for = "subject"> Choose subject: </label>
+                <select id="subject">
+                    <option value = "" disabled selected></option>
+                    <option value = "English">English</option>
+                    <option value = "Maths">Maths</option>
+                    <option value = "Science">Science</option>
+                    <option value = "SST">Social Science</option>
+                    <option value = "Hindi">Hindi</option>
+                </select>
+                
+
+                <label for = "depart"> Choose department: </label>
+                <select id="depart">
+                    <option value = "" disabled selected></option>
+                    <option value = "ComputerSc">Computer Science</option>
+                    <option value = "Engineering">Engineering</option>
+                    <option value = "Data Science">Data Science</option>
+                    <option value = "Electrical Engineering">Electrical Engineering</option>
+                </select>
+                
+
+                <div class = "center-button"> <!-- To center the Add Teacher button -->
+                    <button id = "add">Add teacher</button>
+                </div>
+                
+
+            </form>
+            
+        </div>
+
+        <script src = "Sidebar-working.js"></script> <!-- Links the working of the sidebar -->
+    </body>
+</html>

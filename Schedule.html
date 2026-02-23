@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- To add a reponsive design so the project is compatible in web and phone interfaces -->
+        <meta charset = "utf-8">
+        <meta name = "viewport", content = "width=device-width initial-scale=1.0">
+
+        <title> Project 4 - Student-Teacher Booking Appointment</title>
+
+        <!-- Link tag links the HTML file to the CSS file for the stylesheet elements to appear on the site -->
+        <link rel = "stylesheet"  href = "Appointment-interface.css">
+        <link rel = "stylesheet"  href = "Sidebar-interface.css"> <!-- Link tag links the HTML file to the CSS file for sidebar visual -->
+
+        <!-- Links to the js file with the firebase connection -->
+        <script type = "module" src = "Schedule.js"></script>
+        
+        <!-- Links to the js file with the firebase connection for logging out-->
+        <script type = "module" src = logout.js></script>
+        
+        <!-- Header to add a sidebar that displays Home and Logout -->
+        <header>
+            <ul>
+                <li><span onclick = "openNav()"> ☰ </span></li> <!-- Function to open the sidebar navigation -->
+                <li> Student-Teacher Appointment Booking </li>
+            </ul>
+        </header>
+        
+    </head>
+    <body>
+        <!-- Div tag that hides the sidebar from view -->
+        <div id = "myNav" class = "overlay">
+            <a href = "javascript:void(0)" class = "closebtn" onclick="closeNav()">✖</a> <!-- Closes the sidebar -->
+
+            <!-- Div tag that displays the sidebar content -->
+            <div class = "overlay-content">
+                <a href = "Teacher.html"> Home </a> <!-- Links back home to the task page -->
+                <a href = "#" id = "logout"> Logout</a> <!-- Logs out the user from the site -->
+            </div>
+
+        </div>
+
+        <div id = "display"> <!-- Div tag to hold the schedule interface -->
+
+            <h1> Schedule your appointment </h1>
+
+            <div class = "form"> <!-- Teachers can select time slot and date of the appointment -->
+
+                <label for = "time">Select your time slot:</label>
+                <select id = "time" value = "time">
+                    <option value = "" disabled selected> Select time </option> <!-- Option is displayed -->
+                    <option value = "09:00 - 10:00"> 09:00 - 10:00 </option>
+                    <option value = "10:00 - 11:00"> 10:00 - 11:00 </option>
+                    <option value = "11:00 - 12:00"> 11:00 - 12:00 </option>
+                    <option value = "12:00 - 13:00"> 12:00 - 13:00 </option>
+                    <option value = "13:00 - 14:00"> 13:00 - 14:00 </option>
+                    <option value = "14:00 - 15:00"> 14:00 - 15:00 </option>
+                    <option value = "15:00 - 16:00"> 15:00 - 16:00 </option>
+                    <option value = "16:00 - 17:00"> 16:00 - 17:00 </option>
+                </select>
+                <br><br>
+
+                <label for = "date">Select your appointment date:</label>
+                <input type = "date" id = "date">
+            </div>
+
+            <div class = "center-button">
+                <button id = "schedule"> Schedule </button> <!-- Adds the date and time to the table in ViewAppoint.html -->
+            </div>
+            
+        </div>
+        
+        <script src = "sidebar-working.js"></script> <!-- Links the working of the sidebar -->
+
+    </body>
+</html>
