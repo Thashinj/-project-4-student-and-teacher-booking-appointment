@@ -51,7 +51,8 @@ Send messages to teachers
 
 # Demo Login Credentials (For Testing Purposes Only)
 
-You may use the following sample accounts to explore different user roles in the system when logging in:
+>> 🚨 Open the Opening.html file to access the full project
+You may use the following sample accounts to explore different user roles in the system when logging in: 
 
  Admin Account:
 
