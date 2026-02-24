@@ -31,39 +31,34 @@ window.addEventListener("pageshow", () => {
 // Takes input from the search bar
 searchInput.addEventListener("input", async () => {
     
-    const searchValue = searchInput.value.trim(); // Trims each value of search input
+    const searchValue = searchInput.value.trim().toLowerCase(); // Trims each value of search input
 
     if (searchValue === "") {
         resultsDiv.innerHTML = "";
         return;
     }
 
-    // Applies query to the collection with a created index in firebase
-    const q = query (
-       collection(db, "availableSlots"),
-       where("status", "==", "available"), 
-       where("teacherName", ">=", searchValue),
-       where("teacherName", "<=", searchValue + "\uf8ff")
-    );
-
-    // Gets query shot from q
-    const querySnapshot = await getDocs(q);
+    // Gets snap shot
+    const snapshot = await getDocs(collection(db, "availableSlots"));
 
     resultsDiv.innerHTML = "";
 
-    if (querySnapshot.empty) {
-        resultsDiv.innerHTML = "<h5> No available slots found </h5>";
-        return;
-    }
+    let found = false; // Found is flagged false
 
     // Checks each data
-    querySnapshot.forEach((docSnap) => {
+    snapshot.forEach((docSnap) => {
 
         // Gets data from docSnap 
         const data = docSnap.data();
 
-        // Adds table to the div, takes the student to the Book.html page on clicking the book button
-        resultsDiv.innerHTML += `
+        // Only show available slots
+        if (data.status === "available") {
+          // Case-insensitive comparision
+          if (data.teacherName.toLowerCase().includes(searchValue)) {
+            found = true; // Flagged true
+
+            // Adds table to the div, takes the student to the Book.html page on clicking the book button
+            resultsDiv.innerHTML += `
           <br><div class = "slot-card">
             <p> ${data.teacherName} </p>
             <p> ${data.date} : ${data.time} </p>
@@ -72,6 +67,11 @@ searchInput.addEventListener("input", async () => {
             </button>
           </div>
         `;
+          }
+        }
     });
 
+    if (!found){
+      resultsDiv.innerHTML = "<h5> No available slots found </h5>";
+    }
 });
