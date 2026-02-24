@@ -46,7 +46,7 @@ h5 {
 }
 
 /* Paragraph text color */
-p {
+p, select {
     color: black;
 }
 
@@ -253,7 +253,6 @@ th, td {
 
 /* Card styling for slots and messages */
 .slot-card, .message-card {
-    color: white;
     background-color: rgb(63, 117, 252);
     padding: 25px;
 }
@@ -266,3 +265,4 @@ img {
     width: 120px;
     object-fit: contain;
 }
+
