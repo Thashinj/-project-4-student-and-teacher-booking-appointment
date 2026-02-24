@@ -13,7 +13,6 @@
 
         <!-- Links to the js file with the firebase connection -->
         <script type = "module" src = "Book.js"></script>
-        <script type = "module" src = "Search.js"></script>
 
         <!-- Links to the js file with the firebase connection for logging out-->
         <script type = "module" src = logout.js></script>
@@ -40,12 +39,24 @@
             </div>
 
         </div>
+
         
+
         <div id = "display"> <!-- Interface of the slot table -->
-            
+
+        <!-- Teacher Selection Dropdown -->
+        <div class="teacher-select">
+            <label for = "teacherDropdown">Select Teacher:</label>
+            <select id="teacherDropdown">
+                <option value=""> Choose Teacher </option>
+            </select>
+        </div>
+        
             <div id = "slots"></div> <!-- Div class will take data from Book.js to display the available slots -->
 
         </div>
+
+        
 
         <script src = "Sidebar-working.js"></script> <!-- Links the working of the sidebar -->
     </body>
