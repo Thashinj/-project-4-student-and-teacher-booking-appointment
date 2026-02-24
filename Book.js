@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebas
 
 import {getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-import { getFirestore, collection, getDoc, addDoc, doc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, query, where, getDoc, addDoc, doc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,77 +24,111 @@ const db = getFirestore(app);
 
 // Gets slots id from Book.html
 const slotsDiv = document.getElementById("slots");
+const teacherDropdown = document.getElementById("teacherDropdown");
 
-// Extracts query and value from URL
-const urlParams = new URLSearchParams(window.location.search);
-const slotId = urlParams.get("slotId");
+// Load teachers into dropdown
+async function loadTeachers() {
 
-onAuthStateChanged(auth, async (user) => {
+  const snapshot = await getDocs(collection(db, "users"));
 
-  // Checks if the user is logged in
+  
+
+  snapshot.forEach((docSnap) => {
+
+    const data = docSnap.data(); // Gets data
+
+    console.log(data.firstName);
+
+    if (data.role === "teacher") { // Displays the name if role is teacher
+      const option = document.createElement("option");
+      option.value = docSnap.id;
+      option.textContent = data.name;
+      teacherDropdown.appendChild(option); // Appends name to the dropdown
+    }
+  });
+}
+
+loadTeachers();
+
+// When teacher selected → show available slots
+teacherDropdown.addEventListener("change", async () => {
+
+  const teacherId = teacherDropdown.value; // Gets value
+
+  if (!teacherId) {
+    slotsDiv.innerHTML = "";
+    return;
+  }
+  
+  // Gets the query collection
+  const q = query(
+    collection(db, "availableSlots"),
+    where("teacherId", "==", teacherId),
+    where("status", "==", "available")
+  );
+
+  const snapshot = await getDocs(q);
+
+  slotsDiv.innerHTML = "";
+
+  if (snapshot.empty) {
+    slotsDiv.innerHTML = "<p>No available slots</p>";
+    return;
+  }
+
+  snapshot.forEach((docSnap) => { // Displays the slot card with the teacher name selected and slot
+
+    const data = docSnap.data();
+
+    slotsDiv.innerHTML += `
+      <div class="slot-card">
+        <p>${data.teacherName}</p>
+        <p>${data.date} - ${data.time}</p>
+        <button onclick="bookSlot('${docSnap.id}')">
+          Book
+        </button>
+      </div>
+    `;
+  });
+});
+
+
+// Book function
+window.bookSlot = async function (slotId) {
+
+  const user = auth.currentUser;
+
   if (!user) {
     alert("Not logged in");
     return;
   }
 
-  if (!slotId) {
-    slotsDiv.innerHTML = "<h5> No slot selected </h5> ";
-    return;
-  }
-
-  // Gets selected slot details
   const slotDoc = await getDoc(doc(db, "availableSlots", slotId));
-
-  if (!slotDoc.exists()) {
-    slotsDiv.innerHTML = "<h5> Slot not found </h5>";
-    return;
-  }
-
-  // Gets a document from the slot data
   const data = slotDoc.data();
 
-  if (data.status !== "available") {
-    slotsDiv.innerHTML = "<h5> This slot is no longer available </h5>"
-    return;
-  }
+  //Get student data
+  const studentDoc = await getDoc(doc(db, "users", user.uid));
+  const studentData = await studentDoc.data();
 
-  // Display slot by inserting the data into slotsDiv class
-  slotsDiv.innerHTML = `
-     <div class = "slot-card">
-       <p> ${data.teacherName} </p>
-       <p>${data.date} - ${data.time}</p><br>
-       <div class = "center-button">
-         <button id = "confirmBooking"> Book Appointment </button>
-       </div>
-     </div>
-    `;
+  // Create appointment
+  await addDoc(collection(db, "bookings"), {
+    teacherId: data.teacherId,
+    teacherName: data.teacherName,
+    studentId: user.uid,
+    studentName: studentData.firstName,
+    slotId: slotId,
+    date: data.date,
+    time: data.time,
+    status: "pending",
+    created: serverTimestamp(),
+  });
 
-  // Gets id and uses event listener to add document
-  document.getElementById("confirmBooking").addEventListener("click", async () => {
+  // Locks the slot
+  await updateDoc(doc(db, "availableSlots", slotId), {
+    status: "booked",
+  });
 
-      //Get student data
-      const studentDoc = await getDoc(doc(db, "users", user.uid));
-      const studentData = await studentDoc.data();
+  alert("Appointment Requested"); // Displays the alert message with the successful message
+  location.reload();
 
-      // Create appointment
-      await addDoc(collection(db, "bookings"), {
-        teacherId: data.teacherId,
-        teacherName: data.teacherName,
-        studentId: user.uid,
-        studentName: studentData.firstName,
-        slotId: slotId,
-        date: data.date,
-        time: data.time,
-        status: "pending",
-        created: serverTimestamp(),
-      });
-
-      // Locks the slot
-      await updateDoc(doc(db, "availableSlots", slotId), {
-        status: "booked"
-      });
-
-      alert("Appointment Requested"); // Displays the alert message with the successful message
-      slotsDiv.innerHTML = "<p> Booking successful. Waiting for approval </p>";
-    });
-});
+};;
