@@ -1,0 +1,268 @@
+/* Import custom SchoolBook font */
+@font-face {
+    src: url('BombermanDemo-lxPEV.otf');
+    font-family: Bomberman;
+}
+
+/* Reset default spacing and apply global font */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Bomberman;
+    font-size: 25px;
+}
+
+/* Main page background and center layout */
+body {
+    margin: auto;
+    padding: 62px;
+    background-image: url("appointmentground.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+}
+
+/* Main heading styles */
+h1, h2 {
+    padding: 10px;
+    color: black;
+    font-size: 45px;
+}
+
+/* Subheading style */
+h4 {
+    padding: 15px;
+    font-size: 30px;
+    color: rgb(32, 30, 57);
+}
+
+/* Small heading style */
+h5 {
+    padding: 15px;
+    color: rgb(32, 30, 57);
+}
+
+/* Paragraph text color */
+p {
+    color: white;
+}
+
+/* Center main interface container */
+#interface {
+    text-align: center;
+}
+
+/* Login section spacing */
+#login {
+    padding: 10px;
+}
+
+/* Primary rounded buttons */
+.open, .op {
+    border-radius: 30px;
+    background-color: rgb(63, 117, 252);
+    color: white;
+    width: 140px;
+    height: 50px;
+    border: none;
+    padding: 25px;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Display container for dashboards */
+#display {
+    padding: 40px;
+    gap: 30px;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    color: rgb(63, 117, 252);
+}
+
+/* Default link styling */
+a {
+    color: rgb(185, 206, 255);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+/* Link hover effect */
+a:hover {
+    color: rgb(198, 240, 255);
+}
+
+/* Flex layout for item rows */
+.item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Form wrapper styling */
+#form {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Login and signup form layout */
+.loginForm, .signupForm {
+    flex-direction: column;
+}
+
+/* Signup form container */
+#formsign {
+    background-color: rgb(63, 117, 252);
+    width: 450px;
+    height: 605px;
+    padding: 50px;
+}
+
+/* Login form container */
+#formlog {
+    background-color: rgb(63, 117, 252);
+    width: 400px;
+    height: 360px;
+    padding: 40px;
+}
+
+/* Create teacher form container */
+#createform {
+    color: black;
+    background-color: rgb(63, 117, 252);
+    width: 450px;
+    height: 555px;
+    padding: 50px;
+    font-size: 25px;
+}
+
+/* Input styling for create form */
+#createform input, #createform select {
+    font-size: 25px;
+    width: 430px;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: none;
+}
+
+/* Input styling for login and signup */
+.loginForm input, .signupForm input {
+    border: none;
+    border-bottom: 2px solid black;
+    width: 100%;
+    font-size: 25px;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+/* Default button styling */
+button {
+    width: 100px;
+    height: 55px;
+    color: black;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Action buttons styling */
+#update, #delete, #send, #schedule {
+    color: white;
+    background-color: rgb(63, 117, 252);
+    width: 170px;
+}
+
+/* Booking confirmation button */
+#confirmBooking {
+    color: black;
+    height: 70px;
+    width: 170px;
+}
+
+/* Search input styling */
+.search-input {
+    font-size: 30px;
+    height: 60px;
+}
+
+/* Center button container */
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+
+/* Dropdown select styling */
+select {
+    width: 250px;
+    height: 40px;
+}
+
+/* Fixed top navigation header */
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    background-color: rgb(63, 117, 252);
+    padding: 15px;
+    justify-content: flex-start;
+    top: 0;
+    gap: 10px 25px;
+}
+
+/* Inline list items */
+li {
+    display: inline-block;
+    padding: 0px 20px; 
+    transition: all 0.3s ease;
+}
+
+/* Table styling */
+table {
+    padding: 40px;
+    border: 3px solid black;
+    border-collapse: collapse;
+    color: rgb(63, 117, 252);
+}
+
+/* Table cells styling */
+th, td {
+    font-size: 30px;
+    text-align: center;
+    border: 3px solid black;
+    padding: 25px;
+}
+
+/* Status color indicators */
+.status.available, .status.pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.status.approved, .status.booked {
+    color: green;
+    font-weight: bold;
+}
+
+.status.rejected {
+    color: red;
+    font-weight: bold;
+}
+
+/* Card styling for slots and messages */
+.slot-card, .message-card {
+    color: white;
+    background-color: rgb(63, 117, 252);
+    padding: 25px;
+}
+
+/* Image sizing control */
+img {
+    vertical-align: middle;
+    display: inline-block;
+    height: 120px;
+    width: 120px;
+    object-fit: contain;
+}

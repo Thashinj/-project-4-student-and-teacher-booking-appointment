@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- To add a reponsive design so the project is compatible in web and phone interfaces -->
+        <meta charset = "utf-8">
+        <meta name = "viewport", content = "width=device-width initial-scale=1.0">
+
+        <title> Project 4 - Student-Teacher Booking Appointment</title>
+
+        <!-- Link tag links the HTML file to the CSS file for the stylesheet elements to appear on the site -->
+        <link rel = "stylesheet"  href = "Appointment-interface.css">
+
+    </head>
+    <body>
+        <!-- Div id interface to add a box around the button of links -->
+       <div id = "interface">
+        <h1>Student Teacher Appointment Meetup</h1>
+
+        <!-- To arrange the links in a proper display format -->
+        <div id = "login">
+            <!-- '?' query parameter that detects who is logging in the website -->
+            <a class = "open" href = "Login.html?role=admin"> Admin Login </a><br><br> <!-- Links to the login or register page depending on the role -->
+            <a class = "open" href = "Login.html?role=teacher"> Teacher Login </a><br><br>
+            <a class = "open" href = "Login.html?role=student"> Student Login </a><br><br>
+            <a class = "open" href = "Register.html?role=student"> Student Register </a>
+        </div>
+
+        </div>
+    </body>
+</html>

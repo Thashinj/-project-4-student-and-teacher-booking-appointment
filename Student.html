@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- To add a reponsive design so the project is compatible in web and phone interfaces -->
+        <meta charset = "utf-8">
+        <meta name = "viewport", content = "width=device-width initial-scale=1.0">
+
+        <title> Project 4 - Student-Teacher Booking Appointment</title>
+
+        <!-- Link tag links the HTML file to the CSS file for the stylesheet elements to appear on the site -->
+        <link rel = "stylesheet"  href = "Appointment-interface.css">
+        <link rel = "stylesheet"  href = "Sidebar-interface.css"> <!-- Link tag links the HTML file to the CSS file for sidebar visual -->
+
+        <!-- Links to the js file with the firebase connection for logging out-->
+        <script type = "module" src = logout.js></script>
+        
+        <!-- Header to add a sidebar that displays Home and Logout -->
+        <header>
+            <ul>
+                <li><span onclick = "openNav()"> ☰ </span></li> <!-- Function to open the sidebar navigation -->
+                <li> Student-Teacher Appointment Booking </li>
+            </ul>
+        </header>
+        
+    </head>
+    <body>
+        <!-- Div tag that hides the sidebar from view -->
+        <div id = "myNav" class = "overlay">
+            <a href = "javascript:void(0)" class = "closebtn" onclick="closeNav()">✖</a> <!-- Closes the sidebar -->
+
+            <!-- Div tag that displays the sidebar content -->
+            <div class = "overlay-content">
+                <a href="Student.html"> Home </a> <!-- Links back home to the tasks page -->
+                <a href = "#" id = "logout"> Logout </a> <!-- Logs out the user from the site -->
+            </div>
+
+        </div>
+        
+        <div id = "display"> <!-- Div class that displays the tasks that the teacher can do -->
+
+            <div class = "item"> <!-- Each div class arranges the picture of the task and link of it in a fixed interface -->
+                <img src = "searching_2170040.png">
+                <a class = "op" href = "Search.html"> Search Teacher </a>
+            </div>
+            
+            <div class = "item">
+                <img src = "reservation_7061954.png">
+                <a class = "op" href = "Book.html"> Book an Appointment </a>
+            </div>
+            
+            <div class = "item">
+                <img src = "send-file_11924587.png">
+                <a class = "op" href = "SendMessage.html"> Send Message </a>
+            </div>
+        
+        </div>
+
+        <script src = "Sidebar-working.js"></script> <!-- Links the working of the sidebar -->
+
+    </body>
+</html>
